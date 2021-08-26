@@ -67,7 +67,7 @@ if flag:
     # To find out the codons
     codons = []
     codon = ''
-    for i in range(len(complementary_RNA)-1):
+    for i in range(len(complementary_RNA)):
         if ((i+1)%3)==0:
             codon = complementary_RNA[i-2:i+1]
             codons.append(codon)
