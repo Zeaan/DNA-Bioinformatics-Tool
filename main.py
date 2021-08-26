@@ -55,6 +55,60 @@ if flag:
         width=alt.Step(80)
     )
     st.write(p)
+    
+    # To write complementary mRNA
+    complementarity = {"A": "U", "C":"G", "G":"C", "T":"A"}
+    complementary_RNA = ''
+    for i in sequence:
+        complementary_RNA = complementary_RNA+complementarity[i]
+    st.write("The complementary mRNA Strand would be")
+    st.write(complementary_RNA)
+
+    # To find out the codons
+    codons = []
+    codon = ''
+    for i in range(len(complementary_RNA)-1):
+        if ((i+1)%3)==0:
+            codon = complementary_RNA[i-2:i+1]
+            codons.append(codon)
+    st.write("The codons are")
+    codon_sequence = ''
+    for i in codons:
+        codon_sequence = codon_sequence+" - "+i
+    st.write(codon_sequence)
+
+    # To find out the amino acids corresponding to codons
+    amino_acids = {
+        "Phe" : ["UUU","UUC"],
+        "Leu" : ["UUA","UUG","CUU","CUA","CUG","CUC"],
+        "Ile" : ["AUU","AUC","AUA"],
+        "Met" : ["AUG"],
+        "Val" : ["GUU","GUC","GUA","GUG"],
+        "Ser" : ["UCU","UCA","UCG","UCC","AGU","AGC"],
+        "Pro" : ["CCU","CCA","CCG","CCC"],
+        "Thr" : ["ACU","ACA","ACC","ACG"],
+        "Ala" : ["GCU","GCA","GCC","GCG"],
+        "Tyr" : ["UAU","UAC"],
+        "His" : ["CUA","CUC"],
+        "Gln" : ["CAA","CAG"],
+        "Asn" : ["AAU","AAC"],
+        "Lys" : ["AAA","AAG"],
+        "Asp" : ["GAU","GAC"],
+        "Glu" : ["GAA","GAG"],
+        "Cys" : ["UGU","UGC"],
+        "Trp" : ["UGG"],
+        "Arg" : ["CGU","CGA","CGG","CGC","AGA","AGG"],
+        "Gly" : ["GGU","GGG","GGA","GGC"], 
+        "Stop Codon" : ["UAA","UAG","UGA"]
+    }
+    amino_acid_sequence = ''
+    for i in codons:
+        for j in amino_acids:
+            for k in amino_acids[j]:
+                if i==k:
+                    amino_acid_sequence = amino_acid_sequence+" - "+j
+    st.write("The amino acid sequence is")
+    st.write(amino_acid_sequence)
 
 st.write("If you want to know more about me, visit my Website or LinkedIn and feel free to connect with me!")
 st.write("Website- https://zeaan.github.io/website/")
