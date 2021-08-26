@@ -89,7 +89,7 @@ if flag:
         "Thr" : ["ACU","ACA","ACC","ACG"],
         "Ala" : ["GCU","GCA","GCC","GCG"],
         "Tyr" : ["UAU","UAC"],
-        "His" : ["CAU","CUC"],
+        "His" : ["CAU","CAC"],
         "Gln" : ["CAA","CAG"],
         "Asn" : ["AAU","AAC"],
         "Lys" : ["AAA","AAG"],
