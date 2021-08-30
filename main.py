@@ -6,7 +6,7 @@ st.title("DNA Bioinformatics Tool")
 st.header("Developed by Zeaan Pithawala")
 
 sample_input = ">Sample FASTA Sequence\nATGCATGCCGTAGA\nGTTCGTGCAGTAGT\nATACATCCTCTAGC"
-st.write("Enter DNA Sequence to get valuable insights")
+st.write("Enter DNA Sequence to get valuable insights like complementary mRNA Sequence, Codons, Amino Acid sequence, Molecular Weight, and Melting Temperature")
 sequence = st.text_area("Paste FASTA Sequence here",sample_input,height=250)
 sequence = sequence.splitlines()
 sequence = sequence[1:]
@@ -37,6 +37,7 @@ if flag:
             Ccount = Ccount+1
     
     st.write("Number of A:",Acount,"Number of C:",Ccount,"Number of G:",Gcount,"Number of T:",Tcount)
+    st.write("The total length of the sequence:",len(sequence))
     
     # Made a dictionary from which Data Frame can be constructed
     d = {'A':Acount, 'C':Ccount, 'G':Gcount, 'T':Tcount}
@@ -109,6 +110,15 @@ if flag:
                     amino_acid_sequence = amino_acid_sequence+" - "+j
     st.write("The amino acid sequence is")
     st.write(amino_acid_sequence)
+    
+    if len(sequence)<14:
+        Tm = ((Acount+Tcount)*2) + ((Gcount+Ccount)*4)
+    else:
+        Tm= 64.9 +41*(Gcount+Ccount-16.4)/(Acount+Tcount+Gcount+Ccount)
+    st.write("The Melting Temperature is",Tm,"°C")
+
+    molar_weight = (Acount * 313.21) + (Tcount * 304.2) + (Ccount * 289.18) + (Gcount * 329.21) - 61.96
+    st.write("The molecular wright is",molar_weight)
 
 st.write("If you want to know more about me, visit my Website or LinkedIn and feel free to connect with me!")
 st.write("Website- https://zeaan.github.io/website/")
